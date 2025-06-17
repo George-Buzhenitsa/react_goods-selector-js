@@ -22,7 +22,14 @@ export const App = () => {
     <main className="section container">
       <h1 className="title is-flex is-align-items-center">
         {selectedGood ? `${selectedGood} is selected` : 'No goods selected'}
-        {selectedGood ? <button onClick={() => setSelectedGood()} data-cy="ClearButton" type="button" className="delete ml-3" /> : null}
+        {selectedGood ? (
+          <button
+            onClick={() => setSelectedGood('')}
+            data-cy="ClearButton"
+            type="button"
+            className="delete ml-3"
+          />
+        ) : null}
       </h1>
 
       <table className="table">
@@ -33,7 +40,7 @@ export const App = () => {
                 <tr data-cy="Good" className="has-background-success-light">
                   <td>
                     <button
-                      onClick={() => setSelectedGood()}
+                      onClick={() => setSelectedGood('')}
                       data-cy="RemoveButton"
                       type="button"
                       className="button is-info"
@@ -48,10 +55,16 @@ export const App = () => {
                 </tr>
               );
             }
+
             return (
               <tr data-cy="Good">
                 <td>
-                  <button onClick={() => setSelectedGood(goodName)} data-cy="AddButton" type="button" className="button">
+                  <button
+                    onClick={() => setSelectedGood(goodName)}
+                    data-cy="AddButton"
+                    type="button"
+                    className="button"
+                  >
                     +
                   </button>
                 </td>
